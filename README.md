@@ -21,9 +21,9 @@ Creare un componente che mostri il numero totale di risultati ottenuti.
     - Main
         - creare delle Card
         - importare l'api e utilizzarla per popolare le card con i dati
-        - ciclare l'elemento card che asbbiamo importato nel main per tutti gli oggetti dell'api
+        - ciclare l'elemento card che abbiamo importato nel main per tutti gli oggetti dell'api
     - Footer
         - inserire la lunghezza dell'array che abbiamo popolato con l'api
 
-3. modificare il design con scss per renderlo uguale a 
+3. modificare il design con scss per renderlo uguale a: 
 <img src="public/sample-site.png" style="width:350px">
