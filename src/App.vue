@@ -27,6 +27,7 @@ methods:{
     .then(result => {
       store.yuGiOhCards = result.data;
       console.log(store.yuGiOhCards)
+      store.loading = false
     })
   }
 },

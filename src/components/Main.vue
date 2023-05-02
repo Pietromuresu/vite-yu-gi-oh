@@ -13,7 +13,8 @@ components:{
 },
 data(){
   return{
-    store
+    store,
+    
   }
 }
 }
@@ -24,10 +25,12 @@ data(){
    
     <div class="container p-4">
       <Search />
-
-      <div class="card-container my-4  p-5">
+      <div v-if="store.loading">
+      Loading
+      </div>
+      <div v-else class="card-container my-4  p-5">
         <div class="found p-2">
-          <h5>Found 39 cards</h5>
+          <h5>Found {{ store.yuGiOhCards.data.length }} cards</h5>
         </div>
 
         <div class=" mb-4 row justify-content-center">
@@ -44,6 +47,7 @@ data(){
 <style lang="scss" scoped>
 @use '../scss/partials/vars' as *;
 .main-container{
+  min-height: 100vh;
   background-color: $bg-main;
 
   .card-container{
@@ -51,11 +55,11 @@ data(){
     width: 100%;
     background-color: #fff;
   }
+  .found{
+    background-color: $almost-black;
+    color: #fff;
+  }
 }
 
-.found{
-  background-color: $almost-black;
-  color: #fff;
-}
 
 </style>
