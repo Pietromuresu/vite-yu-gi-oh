@@ -23,10 +23,12 @@ data(){
 <template>
   <div class="main-container">
    
-    <div class="container p-4">
+    <div class="container p-4 h-100">
       <Search />
-      <div v-if="store.loading">
-      Loading
+      <div v-if="store.loading" class="d-flex justify-content-center align-items-center h-100">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
       </div>
       <div v-else class="card-container my-4  p-5">
         <div class="found p-2">
