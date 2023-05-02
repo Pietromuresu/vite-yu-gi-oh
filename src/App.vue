@@ -1,5 +1,5 @@
 <script>
-import { store } from "./assets/data/store"
+import { store } from "./assets/data/store";
 
 
 import Header from './components/Header.vue'; 
@@ -12,6 +12,7 @@ components:{
   Header,
   Main,
   Footer
+  
 },
 
 data() {
@@ -24,8 +25,8 @@ methods:{
   getApi(){
     axios.get(store.apiUrl)
     .then(result => {
-      store.yuGiOhCards = result.data
-      console.log(store.yuGiOhCards);
+      store.yuGiOhCards = result.data;
+      console.log(store.yuGiOhCards)
     })
   }
 },
