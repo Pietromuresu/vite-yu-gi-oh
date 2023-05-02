@@ -40,10 +40,14 @@ mounted(){
 </script>
 
 <template>
-  
+  <Header />
+  <Search />
+  <Main />
+  <Footer />
 </template>
 
 <style lang="scss" >
-
-
+@import "bootstrap/scss/bootstrap.scss";
+@import './scss/partials/general';
+@import './scss/partials/vars';
 </style>
