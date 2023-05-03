@@ -4,4 +4,5 @@ export const store = reactive({
   apiUrl: "https://db.ygoprodeck.com/api/v7/cardinfo.php",
   yuGiOhCards: [],
   loading: true,
+  cardType: []
 })

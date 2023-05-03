@@ -1,18 +1,20 @@
 <script>
+import {store} from '../../assets/data/store';
 export default {
 name: 'Search',
 
 data(){
   return{
-    
+    store,
   }
 }
 }
-</script>
+</script> 
 
 <template>
   <select name="filterBy" id="filter">
-    <option value="alien">Alien</option>
+    <option value="" selected>Select a type</option>
+    <option v-for="typeOf in store.cardType" :key="typeOf" :value="typeOf">{{ typeOf }}</option>
   </select>
 </template>
 

@@ -23,11 +23,19 @@ data() {
 
 methods:{
   getApi(){
+    store.loading = true
     axios.get(store.apiUrl)
     .then(result => {
       store.yuGiOhCards = result.data;
       console.log(store.yuGiOhCards)
       store.loading = false
+
+      result.data.data.forEach(element => {
+        if(!store.cardType.includes(element.type)){
+          store.cardType.push(element.type)
+        }         
+      })
+
     })
   }
 },
