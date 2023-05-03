@@ -6,5 +6,7 @@ export const store = reactive({
   yuGiOhCards: [],
   loading: true,
   cardType: [],
-  typeOf: ''
+  typeOf: '',
+  offset: 0,
+  num: 20
 })

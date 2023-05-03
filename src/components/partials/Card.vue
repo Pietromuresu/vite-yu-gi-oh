@@ -26,6 +26,7 @@ export default {
   div{
     background-color: $bg-main;
     width: 220px;
+    max-width:220px ;
     padding: 0 !important;
     img{
       width: 220px;

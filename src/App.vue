@@ -30,27 +30,42 @@ methods:{
     if(store.typeOf === ''){
       store.apiSearch = store.apiUrl
     }else {
-      store.apiSearch = store.apiUrl + `?type=${store.typeOf}
-`    }
+      store.apiSearch = store.apiUrl + `?type=${store.typeOf}`
+        }
 
-    axios.get(store.apiSearch)
+    axios.get(store.apiSearch, {
+      params:{
+        num: store.num,
+        offset: store.offset
+      }
+    })
     .then(result => {
       store.yuGiOhCards = result.data;
       console.log(store.yuGiOhCards)
       store.loading = false
 
-      if(store.cardType.length === 0)
-        result.data.data.forEach(element => {
-          if(!store.cardType.includes(element.type)){
-            store.cardType.push(element.type)
-          }         
-        })
+      
+        
         console.log(store.apiSearch);
     })
+  },
+  gettalo(){
+    axios.get(store.apiUrl)
+      .then(result => {
+
+        if(store.cardType.length === 0){
+            result.data.data.forEach(element => {
+              if(!store.cardType.includes(element.type)){
+                store.cardType.push(element.type)
+              }         
+            })
+          }
+      })
   }
 },
 
 mounted(){
+  this.gettalo()
   store.apiSearch = store.apiUrl
   this.getApi()
 }
