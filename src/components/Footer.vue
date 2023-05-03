@@ -17,7 +17,7 @@ methods:{
 </script>
 
 <template>
-  <footer class="d-flex justify-content-center">
+  <footer class="d-flex justify-content-center pb-5">
     <button v-if="store.offset" @click="nextPrev(-store.num)" class="btn me-3">Prev</button>
     <button v-if="store.totOffset === 1 " @click="nextPrev(store.num)" class="btn">Next</button>
   </footer>
