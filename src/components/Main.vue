@@ -36,7 +36,7 @@ data(){
         </div>
 
         <div class=" mb-4 row justify-content-center">
-          <Card v-for="card in store.yuGiOhCards.data" :key="card.id" :name="card.name" :type="card.archetype" :img="card.card_images[0].image_url"/>
+          <Card v-for="card in store.yuGiOhCards.data" :key="card.id" :name="card.name" :type="card.archetype || card.type" :img="card.card_images[0].image_url"/>
         </div>
 
       </div>
