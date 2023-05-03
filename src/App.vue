@@ -43,16 +43,13 @@ methods:{
       store.yuGiOhCards = result.data;
       console.log(store.yuGiOhCards)
       store.loading = false
-
-      
-        
-        console.log(store.apiSearch);
+      console.log(store.apiSearch);
     })
   },
-  gettalo(){
+  // creo questa funzione perchè se popolassi la select con getApi riceverei solo i types delle card che sono state caricate invece separandoli prendo l'intero array e lo ispeziono per trovare tutti i types
+  getAllTypes(){
     axios.get(store.apiUrl)
       .then(result => {
-
         if(store.cardType.length === 0){
             result.data.data.forEach(element => {
               if(!store.cardType.includes(element.type)){
@@ -65,7 +62,7 @@ methods:{
 },
 
 mounted(){
-  this.gettalo()
+  this.getAllTypes()
   store.apiSearch = store.apiUrl
   this.getApi()
 }
