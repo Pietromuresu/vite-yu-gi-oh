@@ -25,6 +25,7 @@ data() {
 methods:{
   getApi(){
     store.loading = true
+    
 
     // dato che non è possibile far comparire tutte le carte quando cerchiamo un valore nullo ho deciso di inserire ua condizione che cambia l'url che viene passato ad axios
     if(store.typeOf === ''){
@@ -44,6 +45,9 @@ methods:{
       console.log(store.yuGiOhCards)
       store.loading = false
       console.log(store.apiSearch);
+      // imposto un tot offset perchè se inferiore ad uno significa che le carte mostrate sono meno di 20 e quindi potenzialmente la lista è finita e saprisce il bottone next
+      store.totOffset = result.data.data.length / store.num
+      console.log(store.totOffset);
     })
   },
   // creo questa funzione perchè se popolassi la select con getApi riceverei solo i types delle card che sono state caricate invece separandoli prendo l'intero array e lo ispeziono per trovare tutti i types
@@ -73,7 +77,7 @@ mounted(){
 <template>
   <Header />
   <Main @searchForReal="this.getApi()" />
-  <Footer />
+  <Footer @seeNextPrev="this.getApi()" />
 </template>
 
 <style lang="scss" >

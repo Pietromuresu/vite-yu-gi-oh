@@ -8,5 +8,6 @@ export const store = reactive({
   cardType: [],
   typeOf: '',
   offset: 0,
+  totOffset: 0 ,
   num: 20
 })

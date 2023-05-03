@@ -18,10 +18,10 @@ data(){
     <select v-model="store.typeOf"  name="filterBy" id="filter">
 
       <option value="" >Select a type</option>
-      <option  v-for="typeOf in store.cardType" :key="typeOf" :value="typeOf">{{ typeOf }}</option>
+      <option @click="store.offset= 0"  v-for="typeOf in store.cardType" :key="typeOf" :value="typeOf">{{ typeOf }}</option>
 
     </select>
-    <button class="btn border ms-4" @click="$emit('searchForType')">Search</button>
+    <button class="btn border ms-4" @click="store.offset= 0, $emit('searchForType') ">Search</button>
   
   </template>
 
