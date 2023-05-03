@@ -1,7 +1,7 @@
 <script>
 import { store } from "./assets/data/store";
 
-
+import Search from './components/partials/Search.vue'
 import Header from './components/Header.vue'; 
 import Main from './components/Main.vue'; 
 import Footer from './components/Footer.vue'; 
@@ -11,7 +11,8 @@ name: 'App',
 components:{
   Header,
   Main,
-  Footer
+  Footer,
+  Search
   
 },
 
@@ -24,23 +25,33 @@ data() {
 methods:{
   getApi(){
     store.loading = true
-    axios.get(store.apiUrl)
+
+    // dato che non è possibile far comparire tutte le carte quando cerchiamo un valore nullo ho deciso di inserire ua condizione che cambia l'url che viene passato ad axios
+    if(store.typeOf === ''){
+      store.apiSearch = store.apiUrl
+    }else {
+      store.apiSearch = store.apiUrl + `?type=${store.typeOf}
+`    }
+
+    axios.get(store.apiSearch)
     .then(result => {
       store.yuGiOhCards = result.data;
       console.log(store.yuGiOhCards)
       store.loading = false
 
-      result.data.data.forEach(element => {
-        if(!store.cardType.includes(element.type)){
-          store.cardType.push(element.type)
-        }         
-      })
-
+      if(store.cardType.length === 0)
+        result.data.data.forEach(element => {
+          if(!store.cardType.includes(element.type)){
+            store.cardType.push(element.type)
+          }         
+        })
+        console.log(store.apiSearch);
     })
   }
 },
 
 mounted(){
+  store.apiSearch = store.apiUrl
   this.getApi()
 }
 
@@ -49,7 +60,7 @@ mounted(){
 
 <template>
   <Header />
-  <Main />
+  <Main @searchForReal="this.getApi()" />
   <Footer />
 </template>
 

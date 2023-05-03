@@ -14,8 +14,7 @@ components:{
 },
 data(){
   return{
-    store,
-    
+    store,  
   }
 },
 methods:{
@@ -28,8 +27,11 @@ methods:{
   <div class="main-container">
    
     <div class="container p-4 h-100">
-      <Search />
+
+      <Search @searchForType="$emit('searchForReal')" />
+      
       <Loading v-if="store.loading"/>
+      
       <div v-else class="card-container my-4  p-5">
         <div class="found p-2">
           <h5>Found {{ store.yuGiOhCards.data.length }} cards</h5>
